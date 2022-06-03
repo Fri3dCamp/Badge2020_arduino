@@ -33,6 +33,8 @@ void setup(void) {
 
 double previousunitx, previousunity;
 
+int blinkcountdown = 10;
+
 void loop(){
   int16_t x, y, z;
   accelerometer.readXYZ(x, y, z);
@@ -53,5 +55,15 @@ void loop(){
   }
 
   delay(200);
+
+  blinkcountdown--;
+  if( blinkcountdown == 0 ) {
+    tft.fillScreen( 0x2c45 );
+    delay(100);
+    tft.fillCircle( 120, 120, 100, ST77XX_WHITE );
+    blinkcountdown = 10 + rand() % 20;
+    previousunitx = 0;
+    previousunity = 0;
+  }
 
 }
