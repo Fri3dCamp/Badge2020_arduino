@@ -1,16 +1,8 @@
-#include <Wire.h>
 #include <Badge2020_Accelerometer.h>
-#include <Adafruit_GFX.h>    // Core graphics library
-#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
-#include <SPI.h>
+#include <Badge2020_TFT.h>
 
-#define TFT_CS          5
-#define TFT_RST        32
-#define TFT_DC         33
-#define BACKLIGHT      12
-
-Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
 Badge2020_Accelerometer accelerometer;
+Badge2020_TFT tft;
 
 void setup(void) {
 
@@ -19,12 +11,11 @@ void setup(void) {
   tft.init(240, 240);
   tft.setRotation( 2 );
 
-  pinMode( BACKLIGHT, OUTPUT );
-  digitalWrite( BACKLIGHT, HIGH );
+  pinMode( BADGE2020_BACKLIGHT, OUTPUT );
+  digitalWrite( BADGE2020_BACKLIGHT, HIGH );
 
   tft.fillScreen( 0x2c45 );
   tft.fillCircle( 120, 120, 100, ST77XX_WHITE );
-
 
   // setup accelerometer
 
