@@ -1,6 +1,5 @@
 // based on https://github.com/DFRobot/DFRobot_LIS2DH12
 
-#include <Wire.h>
 #include <Badge2020_Accelerometer.h>
 
 Badge2020_Accelerometer accelerometer;

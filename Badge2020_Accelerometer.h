@@ -3,6 +3,8 @@
 #ifndef Badge2020_Accelerometer_h
 #define Badge2020_Accelerometer_h
 
+#include <Wire.h>
+
 #include <stdlib.h>
 #include <stdint.h>
 
