@@ -1,19 +1,17 @@
-#include <Adafruit_GFX.h>    // Core graphics library
-#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
-#include <SPI.h>
+#include <Badge2020_TFT.h>
+Badge2020_TFT tft;
 
-#define TFT_CS          5
-#define TFT_RST        32
-#define TFT_DC         33
-#define BACKLIGHT      12
-
-#define GAMEON_UP      39
-#define GAMEON_DOWN    15
-#define GAMEON_LEFT    26
-#define GAMEON_RIGHT   00
-#define GAMEON_BUTTON  34
-
-Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
+#define GAMEON_UP             39
+#define GAMEON_DOWN           15
+#define GAMEON_LEFT           26
+#define GAMEON_RIGHT          00
+#define GAMEON_BUTTON         34
+#define GAMEON_SELECT         36
+#define GAMEON_START          32
+#define GAMEON_A              13
+#define GAMEON_B              12
+#define GAMEON_SHOULDERLEFT   27
+#define GAMEON_SHOULDERRIGHT  14
 
 void setup(void) {
 
