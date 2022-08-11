@@ -1,6 +1,10 @@
 # Arduino library for the Fri3d Camp 2022 Badge
 
-## Installation
+This repository contains C++ examples for the [Fri3d Camp 2022 badge](https://fri3d.be/badge/), to be used with the Arduino IDE or other editors like Visual Studio Code that support Arduino libraries. 
+
+If you prefer Python over C++, check out the [MicroPython repository](https://github.com/Fri3dCamp/Badge2020_micropython)
+
+## Installation for the Arduino IDE
 
 Installation is two-fold, first of all you need to install support for the Fri3d Badge. The badge carries an ESP32, so we need to install support for the ESP32 boards.
 
