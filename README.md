@@ -28,4 +28,8 @@ Download this repo as a .ZIP file and install it, similar to other Arduino libra
 
 ## Usage
 
-This is a work in progress, the library for now only contains basic examples of (parts of) the hardware.
+* In the Arduino IDE, check the examples or demos under **File>Example>Fri3d Camp 2022 Badge** and open one
+* Connect the badge to your computer with a USB-C cable
+* Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
+* Compile and upload the code with **Sketch>Upload**
+* Change and mix the examples and have fun!
