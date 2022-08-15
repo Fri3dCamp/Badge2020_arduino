@@ -6,7 +6,7 @@
 #include <SPI.h>
 
 #define BADGE2020_TFT_CS          5
-#define BADGE2020_TFT_RST        32
+#define BADGE2020_TFT_RST        26
 #define BADGE2020_TFT_DC         33
 #define BADGE2020_BACKLIGHT      12
 
