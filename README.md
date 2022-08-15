@@ -37,3 +37,9 @@ Download this repo as a .ZIP file and install it, similar to other Arduino libra
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
 * Compile and upload the code with **Sketch>Upload**
 * Change and mix the examples and have fun!
+
+## Gotchas
+
+* The badge sometimes doesn't go into bootloader mode (you might see the error "The chip needs to be in download mode."). You can do it manually: if the Arduino IDE says "Connecting....": *press and hold* the boot button, quickly press the reset button, then release the boot button once Arduino says "uploading".
+* Using a Mac with a M1 chip? The USB port can glitch when the battery is inside the batch. **Remove the battery first** and use only the power coming from USB-C.
+
