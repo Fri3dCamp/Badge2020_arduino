@@ -4,8 +4,8 @@
 #include <time.h>
 #include <sntp.h>
 
-const char* SSID = "your_ssid";
-const char* PASSWORD = "your_password";
+const char* SSID = "your ssid";
+const char* PASSWORD = "your password";
 
 const char* ntpServer = "time.nist.gov"; //"pool.ntp.org";
 const long  gmtOffset_sec = 3600;
@@ -23,6 +23,9 @@ void timeavailable(struct timeval *t)
   DrawClockFace();
 }
 
+struct tm timeinfo;
+struct tm last = {};
+
 void setup(void) {
 
   tft.init(240, 240);
@@ -34,6 +37,20 @@ void setup(void) {
   tft.setTextColor(ST77XX_WHITE);
   tft.setTextSize(3);
 
+  if (!getLocalTime(&timeinfo)) {
+    ConnectNTP();    
+  }
+  else {
+    DrawClockFace();
+  }
+}
+
+void ConnectNTP () {
+  // set notification call-back function
+  sntp_set_time_sync_notification_cb( timeavailable );
+
+  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+  
   tft.print("Connect ");
   tft.print(SSID);
   WiFi.begin(SSID, PASSWORD);
@@ -45,10 +62,6 @@ void setup(void) {
   tft.println("WiFi connected");
   tft.println(WiFi.localIP());
 
-  // set notification call-back function
-  sntp_set_time_sync_notification_cb( timeavailable );
-
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
 
 }
 
@@ -59,7 +72,7 @@ const int MIN_IND = 5;
 const int FACE_COLOR = ST77XX_WHITE;
 const int FACE_BG_COLOR = ST77XX_BLACK;
 
-void DrawClockFace() {
+void DrawClockFace() {  
   tft.fillScreen(FACE_BG_COLOR);
 
   int mid_x = tft.width() / 2;
@@ -85,9 +98,6 @@ void DrawClockFace() {
 
 }
 
-struct tm timeinfo;
-struct tm last = {};
-
 const int SECONDS_HAND_LENGTH = 95;
 const int SECONDS_HAND_COLOR = ST77XX_RED;
 const int MINUTES_HAND_LENGTH = 85;
@@ -110,20 +120,22 @@ void loop() {
     angle = timeinfo.tm_sec * 2.0 * PI / 60.0;
     DrawHand(angle, SECONDS_HAND_LENGTH, true, SECONDS_HAND_COLOR);
 
-    ///////// MINUTES
+    ///////// ERASE MINUTES AND HOURS
     if (last.tm_min != timeinfo.tm_min) {
       angle = last.tm_min * 2.0 * PI / 60.0;
       DrawHand(angle, MINUTES_HAND_LENGTH, false, FACE_BG_COLOR); //erase previous minutes-hand
+
+      //since the hours hand also moves (slightly) as the minutes advance, we need to erase the hours hand as well
+      angle = ((float) last.tm_hour + last.tm_min/60.0) * 2.0 * PI / 12.0;
+      DrawHand(angle, HOURS_HAND_LENGTH, true, FACE_BG_COLOR); //erase previous hours-hand
     }
+
+    ///////// MINUTES
     angle = timeinfo.tm_min * 2.0 * PI / 60.0;
     DrawHand(angle, MINUTES_HAND_LENGTH, false, MINUTES_HAND_COLOR); //always redraw minutes to make sure it wasn't erased by seconds hand
 
     ///////// HOURS
-    if (last.tm_hour != timeinfo.tm_hour) {
-      float angle = last.tm_hour * 2.0 * PI / 12.0;
-      DrawHand(angle, HOURS_HAND_LENGTH, true, FACE_BG_COLOR); //erase previous hours-hand
-    }
-    angle = timeinfo.tm_hour * 2.0 * PI / 12.0;
+    angle = ((float) timeinfo.tm_hour + timeinfo.tm_min/60.0) * 2.0 * PI / 12.0;
     DrawHand(angle, HOURS_HAND_LENGTH, true, HOURS_HAND_COLOR); //always redraw hours to make sure it wasn't erased by seconds hand
   }
 
