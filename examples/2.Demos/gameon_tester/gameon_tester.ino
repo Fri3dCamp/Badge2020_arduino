@@ -13,6 +13,18 @@ Badge2020_TFT tft;
 #define GAMEON_SHOULDERLEFT 27
 #define GAMEON_SHOULDERRIGHT 14
 
+void gameon_select_pinmode_input_pullup()
+{
+  // initialiseer de accelerometer om GPIO36 (SELECT) high te trekken
+  Wire.begin();
+  Wire.beginTransmission(0x18);
+  Wire.write(0x25);
+  Wire.write(0x0A);
+  Wire.endTransmission(true);
+  
+  pinMode(GAMEON_SELECT, INPUT); 
+}
+
 void setup(void)
 {
   tft.init(240, 240);
@@ -26,7 +38,7 @@ void setup(void)
   pinMode(GAMEON_LEFT, INPUT_PULLUP);
   pinMode(GAMEON_RIGHT, INPUT_PULLUP);
   pinMode(GAMEON_BUTTON, INPUT_PULLUP);
-  pinMode(GAMEON_SELECT, INPUT);
+  gameon_select_pinmode_input_pullup();
   pinMode(GAMEON_START, INPUT_PULLUP);
   pinMode(GAMEON_A, INPUT_PULLUP);
   pinMode(GAMEON_B, INPUT_PULLUP);
