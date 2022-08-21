@@ -11,9 +11,6 @@ void setup(void) {
   tft.init(240, 240);
   tft.setRotation( 2 );
 
-  pinMode( BADGE2020_BACKLIGHT, OUTPUT );
-  digitalWrite( BADGE2020_BACKLIGHT, HIGH );
-
   tft.fillScreen( 0x2c45 );
   tft.fillCircle( 120, 120, 100, ST77XX_WHITE );
 

@@ -8,7 +8,6 @@
 #define BADGE2020_TFT_CS          5
 #define BADGE2020_TFT_RST        26
 #define BADGE2020_TFT_DC         33
-#define BADGE2020_BACKLIGHT      12
 
 class Badge2020_TFT : public Adafruit_ST7789 {
 public:

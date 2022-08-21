@@ -30,16 +30,13 @@ void setup(void)
   tft.init(240, 240);
   tft.setRotation(2);
 
-  pinMode(BADGE2020_BACKLIGHT, OUTPUT);
-  digitalWrite(BADGE2020_BACKLIGHT, HIGH);
-
   pinMode(GAMEON_UP, INPUT_PULLUP);
   pinMode(GAMEON_DOWN, INPUT_PULLUP);
   pinMode(GAMEON_LEFT, INPUT_PULLUP);
   pinMode(GAMEON_RIGHT, INPUT_PULLUP);
   pinMode(GAMEON_BUTTON, INPUT_PULLUP);
   gameon_select_pinmode_input_pullup();
-  pinMode(GAMEON_START, INPUT_PULLUP);
+  pinMode(GAMEON_START, INPUT);
   pinMode(GAMEON_A, INPUT_PULLUP);
   pinMode(GAMEON_B, INPUT_PULLUP);
   pinMode(GAMEON_SHOULDERLEFT, INPUT_PULLUP);
