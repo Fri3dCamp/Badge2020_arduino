@@ -6,9 +6,6 @@ void setup(void) {
   tft.init(240, 240);
   tft.setRotation( 2 );
 
-  pinMode( BADGE2020_BACKLIGHT, OUTPUT );
-  digitalWrite( BADGE2020_BACKLIGHT, HIGH );
-
   // Anything from the Adafruit GFX library can go here, see
   // https://learn.adafruit.com/adafruit-gfx-graphics-library
   

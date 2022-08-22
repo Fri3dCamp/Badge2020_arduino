@@ -6,14 +6,20 @@
 #include <SPI.h>
 
 #define BADGE2020_TFT_CS          5
-#define BADGE2020_TFT_RST        26
+#define BADGE2020_TFT_RST        -1
 #define BADGE2020_TFT_DC         33
-#define BADGE2020_BACKLIGHT      12
+
+#define BADGE2020_ACC_ADDRESS    0x18
+#define BADGE2020_ACC_CTRL_REG5  0x25
 
 class Badge2020_TFT : public Adafruit_ST7789 {
 public:
-	Badge2020_TFT() : Adafruit_ST7789( BADGE2020_TFT_CS, BADGE2020_TFT_DC, BADGE2020_TFT_RST ) {}
-private:  
+	Badge2020_TFT();
+
+	// NOTE: these methods only work if the backlight switch is set to AUTO
+	void enableBacklight();
+	void disableBacklight();  // NOTE: this will also disable the select button of the game-on
+private:
 
 };
 	
