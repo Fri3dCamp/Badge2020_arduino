@@ -1,7 +1,7 @@
 Maak van je Fri3d badge 2022 met gameOn en aangesloten speaker een radio.
 
 Installatie
-- Check je ESP32 Arduino core: gebruik 1.0.6 of 2.0.4 (de eerder 2.X versies hebben onstabiele ondersteuning voor audio)
+- Check je ESP32 Arduino core: gebruik 1.0.6 of 2.0.4 (de eerdere 2.X versies hebben onstabiele ondersteuning voor audio)
 - Installeer de library ESP8266 vanuit bibiotheek beheer in de Arduino IDE
 	- versie 1.9.5 als je core 1.0.6 gebruikt
 	- versie 1.9.7 als je core 2.0.4 gebruikt
