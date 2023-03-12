@@ -10,7 +10,7 @@
 #define BADGE2020_TFT_DC         33
 
 #define BADGE2020_ACC_ADDRESS    0x18
-#define BADGE2020_ACC_CTRL_REG5  0x25
+#define BADGE2020_ACC_CTRL_REG6  0x25
 
 class Badge2020_TFT : public Adafruit_ST7789 {
 public:
